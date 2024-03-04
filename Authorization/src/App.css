@@ -1,0 +1,10 @@
+body {
+  margin: 0px;
+}
+
+.registrationPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}

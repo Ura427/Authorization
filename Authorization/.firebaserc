@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "reactauthorizationapp",
+    "authApp": "reactauthorizationapp"
+  },
+  "targets": {},
+  "etags": {}
+}

@@ -7,6 +7,7 @@ interface GenderRadiosProps {
       Username: string;
       Email: string;
       Password: string;
+      RepeatPassword: string;
       BirthDate: {
         day: string;
         month: string;
@@ -26,11 +27,20 @@ function GenderRadios({ setUserData }: GenderRadiosProps) {
   };
 
   return (
-    <div className="w-full flex gap-2">
+    <div className="w-full ">
+      <span className="mt-4">Gender</span>
+       {/* // <div className="w-full flex gap-2">
+    //   <GenderRadio id={"radioMan"} value={"Man"} handleGenderChange={handleGenderChange}/>
+    //   <GenderRadio id={"radioWoman"} value={"Woman"} handleGenderChange={handleGenderChange}/>
+    //   <GenderRadio id={"radioAnother"} value={"Another"} handleGenderChange={handleGenderChange}/>
+    // </div> */}
+    <div className="grid grid-cols-3 gap-4">
       <GenderRadio id={"radioMan"} value={"Man"} handleGenderChange={handleGenderChange}/>
       <GenderRadio id={"radioWoman"} value={"Woman"} handleGenderChange={handleGenderChange}/>
       <GenderRadio id={"radioAnother"} value={"Another"} handleGenderChange={handleGenderChange}/>
     </div>
+    </div>
+   
   );
 }
 

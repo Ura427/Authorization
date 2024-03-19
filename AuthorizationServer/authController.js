@@ -4,10 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { secret } = require("./config");
 
-const generateAccessToken = ({ id, roles }) => {
+const generateAccessToken = ({ id, roles, username }) => {
   const payload = {
     id,
     roles,
+    username
   };
   return jwt.sign(payload, secret, { expiresIn: "24h" });
 };
@@ -65,7 +66,7 @@ class authContoller {
         res.status(400).json({ message: "Invalid password" });
       }
       console.log("Roles ", user.roles);
-      const token = generateAccessToken({ id: user._id, roles: user.roles });
+      const token = generateAccessToken({ id: user._id, roles: user.roles, username: user.username });
       console.log("Decoded: ", jwt.verify(token, secret));
       return res.json({ token });
     } catch (error) {

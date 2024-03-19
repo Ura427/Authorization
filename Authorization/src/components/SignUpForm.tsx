@@ -6,6 +6,7 @@ import GenderRadios from "./GenderRadios.tsx";
 import RepeatPasswordInput from "./RepeatPasswordInput.tsx";
 
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 function Form() {
   // const [invalidInput, setInvalidInput] = useState(true);
@@ -32,7 +33,11 @@ function Form() {
     Email: "",
     Password: "",
     RepeatPassword: "",
-    BirthDate: { day: "01", month: "January", year: new Date().getFullYear().toString() },
+    BirthDate: {
+      day: "01",
+      month: "January",
+      year: new Date().getFullYear().toString(),
+    },
     Gender: "",
   });
   const [errorMessages, setErrorMessages] = useState({
@@ -49,8 +54,7 @@ function Form() {
 
   console.log("Invalids: ", invalidData);
   console.log("Invalid INPUT: ", invalidInput);
-  console.log(userData)
- 
+  console.log(userData);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,7 +111,7 @@ function Form() {
         setInvalidData={setInvalidData}
         setErrorMessages={setErrorMessages}
       />
-     
+
       <BirthdateCombo
         setUserData={setUserData}
         userData={userData}
@@ -118,11 +122,15 @@ function Form() {
 
       <button
         disabled={invalidInput}
-        className="py-1 px-8 mt-8 bg-cyan-600 text-stone-200  font-bold rounded-md shadow-sm active:hover:text-stone-50 hover:bg-cyan-800 disabled:bg-gray-400"
+        className="py-1 px-8 mt-6 bg-cyan-600 text-stone-200  font-bold rounded-md shadow-sm active:hover:text-stone-50 hover:bg-cyan-800 disabled:bg-gray-400"
         onClick={(e) => onSubmit(e)}
       >
         Sign Up
       </button>
+
+      <NavLink to="/" className="text-cyan-500">
+        Already have an account
+      </NavLink>
     </form>
   );
 }

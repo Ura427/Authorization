@@ -1,6 +1,5 @@
 const User = require("./models/User");
 const Role = require("./models/Role");
-const Gender = require("./models/Gender");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { secret } = require("./config");

@@ -105,6 +105,8 @@ import LoginInput from "./LoginInput.tsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { useDispatch } from "react-redux";
+import {Authorize} from "../store/Slices/AuthSlice"
 // import jwt from "jsonwebtoken"
 
 function Form() {
@@ -133,6 +135,8 @@ function Form() {
     Password: "",
   });
 
+  const dispatch = useDispatch();
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     axios
@@ -145,12 +149,12 @@ function Form() {
         const decodedData = jwtDecode(token);
         console.log(decodedData);
         console.log(response);
+        dispatch( Authorize(decodedData))
         navigate("/home");
       })
       .catch((error) => {
         console.error("Error while authorizing user: ", error);
         alert("Error while authorizing user: " + error);
-       
       });
   };
 

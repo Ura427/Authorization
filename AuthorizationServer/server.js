@@ -2,12 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const authRouter = require("./AuthRouter");
 const mongoose = require("mongoose");
+require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 
 const corsOptions ={
-  origin:'http://localhost:5174', 
+  origin:'http://localhost:5173', 
   credentials:true,            
   optionSuccessStatus:200
 }
@@ -18,7 +19,7 @@ app.use("/auth", authRouter);
 
 const start = async () => {
   try {
-    await mongoose.connect("mongodb+srv://urakost427:UoiCCDNTux2RfeZr@authorization.zucsly3.mongodb.net/?retryWrites=true&w=majority&appName=Authorization")
+    await mongoose.connect(process.env.MONGOOSECONNECTIONSTRING)
     app.listen(PORT, () => {
       console.log(`Work on port ${PORT}`);
     });
@@ -28,5 +29,3 @@ const start = async () => {
 };
 
 start();
-
-

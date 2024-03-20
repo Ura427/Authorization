@@ -28,5 +28,5 @@ const authSlice = createSlice({
 
 
 export const {Authorize, Unauthorize} = authSlice.actions
-
+export type AuthType = typeof authSlice
 export default authSlice.reducer;

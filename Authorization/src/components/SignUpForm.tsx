@@ -6,10 +6,11 @@ import GenderRadios from "./GenderRadios.tsx";
 import RepeatPasswordInput from "./RepeatPasswordInput.tsx";
 
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Form() {
   // const [invalidInput, setInvalidInput] = useState(true);
+  const navigate = useNavigate();
   const [invalidData, setInvalidData] = useState({
     Username: true,
     Email: true,
@@ -68,6 +69,8 @@ function Form() {
       })
       .then((response) => {
         console.log(response);
+        navigate("/")
+
       })
       .catch((error) => {
         console.error("Error while creating user: ", error);
